@@ -1,0 +1,32 @@
+External vs. internal linkage
+
+A free function is a function that is defined at global or namespace scope. Non-const global variables and free functions by default have external linkage; they are visible from any translation unit in the program. Therefore, no other global object can have that name. A symbol with internal linkage or no linkage is visible only within the translation unit in which it is declared. When a name has internal linkage, the same name may exist in another translation unit. Variables declared within class definitions or function bodies have no linkage.
+
+You can force a global name to have internal linkage by explicitly declaring it as static. This limits its visibility to the same translation unit in which it is declared. In this context, static means something different than when applied to local variables.
+
+The following objects have internal linkage by default:
+
+    const objects
+    constexpr objects
+    typedefs
+    static objects in namespace scope
+
+To give a const object external linkage, declare it as extern and assign it a value:
+
+extern const int value = 42;
+
+Standard command-line arguments
+
+The arguments for main allow convenient command-line parsing of arguments. The types for argc and argv are defined by the language. The names argc and argv are traditional, but you can name them whatever you like.
+
+The argument definitions are as follows:
+
+argc
+An integer that contains the count of arguments that follow in argv. The argc parameter is always greater than or equal to 1.
+
+argv
+An array of null-terminated strings representing command-line arguments entered by the user of the program. By convention, argv[0] is the command with which the program is invoked. argv[1] is the first command-line argument. The last argument from the command line is argv[argc - 1], and argv[argc] is always NULL.
+
+
+
+https://docs.microsoft.com/en-us/cpp/cpp/temporary-objects?view=msvc-160
